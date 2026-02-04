@@ -1,20 +1,42 @@
 plugins {
+    id 'application'
     id 'java'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
 }
-
-group = 'org.example'
-version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
+javafx {
+    version = '25.0.2'
+    modules = [ 'javafx.controls', 'javafx.media' ]  // <-- add media for AudioClip
+}
+
+
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
+    // JUnit BOM keeps all JUnit pieces on the same compatible version
+    testImplementation platform('org.junit:junit-bom:5.10.3')
+
+    // JUnit Jupiter API + Engine
     testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+
+    // This fixes “Failed to load JUnit Platform” in some Gradle/JDK combos
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
+
 test {
     useJUnitPlatform()
+}
+
+application {
+    mainClass = 'simon.ui.MainApp'
 }

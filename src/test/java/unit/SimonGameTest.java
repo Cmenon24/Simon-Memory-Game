@@ -1,20 +1,22 @@
-package simon;
+package unit;
 
 import org.junit.jupiter.api.Test;
 import simon.model.*;
-
 import java.util.Random;
-
 import static org.junit.jupiter.api.Assertions.*;
+
+/**
+Tests for the correct input handling, round completion logic, and game over behavir when the wrong input is given
+ */
 
 class SimonGameTest {
 
     @Test
     void startNewGameResetsEverything() {
-        // Create the game with predictable random values (seeded Random)
+        // Create the game with predictable random values
         SimonGame game = new SimonGame(new PatternGenerator(new Random(1)));
 
-        // Start a new game for a player
+        // Start a new game for  player
         game.startNewGame(new Player("Alex"));
 
         // Confirm the game reset correctly
@@ -25,15 +27,15 @@ class SimonGameTest {
 
     @Test
     void nextRoundAddsOneColorToPattern() {
-        // Create game with predictable random values
+        // Create a game with predictable random values
         SimonGame game = new SimonGame(new PatternGenerator(new Random(1)));
         game.startNewGame(new Player("Alex"));
 
-        // Start first round: pattern should grow by 1
+        // Start first round and pattern should grow by 1
         game.nextRound();
         int size1 = game.getPattern().size();
 
-        // Start second round: pattern should grow by 1 again
+        // Start second round andpattern should grow by 1 again
         game.nextRound();
         int size2 = game.getPattern().size();
 

@@ -1,4 +1,7 @@
 package simon.model;
 
-public record Player() {
-}
+/**
+ * Player stores information about the current player.
+ * A record is a simple and clean way to store data.
+ */
+public record Player(String name) { }

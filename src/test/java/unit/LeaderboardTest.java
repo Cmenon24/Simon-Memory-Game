@@ -1,4 +1,4 @@
-package simon;
+package unit;
 
 import org.junit.jupiter.api.Test;
 import simon.score.Leaderboard;
@@ -7,6 +7,13 @@ import simon.score.ScoreEntry;
 import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Tests for the Leaderboard class, that is used to manage the top scores
+-Adds scores to the leaderborad
+ -Sorts scores correctly (highest first)
+ -Ensures the ordering is correct
+ */
 
 class LeaderboardTest {
 
